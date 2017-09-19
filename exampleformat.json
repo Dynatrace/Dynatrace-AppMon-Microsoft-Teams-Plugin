@@ -1,0 +1,28 @@
+{
+  "summary": "Alert",
+  "themeColor": "0078D7",
+  "title": "Severe Incident started: Application Process Unavailable (unexpected)",
+  "sections": [
+    {
+      "activityTitle": "David Claux",
+      "activitySubtitle": "9/13/2016, 3:34pm",
+      "activityImage": "https://raw.githubusercontent.com/tutnes/Dynatrace-MSTeams-Integration-Plugin/master/images/incident-ended.png",
+      "facts": [
+        {
+          "name": "Agents:",
+          "value": "Name of list"
+        },
+        {
+          "name": "Hosts:",
+          "value": "(none)"
+        },
+        {
+          "name": "System profile:",
+          "value": "(none)"
+        }
+      ],
+      "text": "Connection to a previously connected Application Process/Agent has been lost and agent has not been able to disconnect..."
+    }
+  ]
+}
+ 

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="com.dynatrace.diagnostics.sdk">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/com.dynatrace.diagnostics.sdk.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

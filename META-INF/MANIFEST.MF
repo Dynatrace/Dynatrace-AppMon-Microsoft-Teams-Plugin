@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: com.MSTeams.Chat;singleton:=true
+Bundle-Version: 0.9.0
+Bundle-Name: MSTeams
+Bundle-ClassPath: .,lib/com.dynatrace.diagnostics.sdk.jar,lib/commons-
+ lang3-3.6.jar
+Require-Bundle: com.dynatrace.diagnostics.sdk
+Bundle-ManifestVersion: 2
+Bundle-Vendor: Dynatrace
+Import-Package: com.dynatrace.diagnostics.pdk
+
