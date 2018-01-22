@@ -88,8 +88,6 @@ public class MSTeams implements ActionV2 {
         String systemProfileName = env.getSystemProfileName();
         String strCustomText = env.getConfigString("customText");
         
-        log.severe(strCustomText);
-        
         //MAP ALL INCIDENTS A COLLECTION
 		Collection<Incident> incidents = env.getIncidents();
 		
