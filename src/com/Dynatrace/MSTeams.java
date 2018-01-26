@@ -7,7 +7,6 @@
 
 package com.Dynatrace;
 
-import com.dynatrace.diagnostics.pdk.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -15,7 +14,19 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Collection;
 import java.util.logging.Logger;
+
 import org.apache.commons.lang3.StringUtils;
+
+import com.dynatrace.diagnostics.pdk.ActionEnvironment;
+import com.dynatrace.diagnostics.pdk.ActionV2;
+import com.dynatrace.diagnostics.pdk.AgentSource;
+import com.dynatrace.diagnostics.pdk.Incident;
+import com.dynatrace.diagnostics.pdk.Measure;
+import com.dynatrace.diagnostics.pdk.MonitorSource;
+import com.dynatrace.diagnostics.pdk.Source;
+import com.dynatrace.diagnostics.pdk.SourceType;
+import com.dynatrace.diagnostics.pdk.Status;
+import com.dynatrace.diagnostics.pdk.Violation;
 
 public class MSTeams implements ActionV2 {
 
@@ -75,6 +86,8 @@ public class MSTeams implements ActionV2 {
 	@Override
 	public Status execute(ActionEnvironment env) throws Exception {
         String systemProfileName = env.getSystemProfileName();
+        String strCustomText = env.getConfigString("customText");
+        
         //MAP ALL INCIDENTS A COLLECTION
 		Collection<Incident> incidents = env.getIncidents();
 		
@@ -200,8 +213,16 @@ public class MSTeams implements ActionV2 {
 					"        {\n" +
 					"          \"name\": \"System profile:\",\n" +
 					"          \"value\": \""+ systemProfileName +"\"\n" +
-					"        }\n" +
-					"      ],\n" +
+					"        }\n";
+				if (strCustomText != null && !strCustomText.isEmpty())
+				{
+					jayson += " ,{\n" +
+							"        \"name\": \"Custom text:\",\n" +
+							"        \"value\": \""+ strCustomText +"\"\n" +
+							"   }\n";
+				}
+				
+				jayson += "],\n" +
 					"      \"text\": \"" + incidentMessage + "\"\n" +
 					"    }\n" +
 					"  ]\n" +
@@ -227,7 +248,7 @@ public class MSTeams implements ActionV2 {
 			String jsonString = jayson;
 
 			//LOG JSON STRING
-			log.fine("JSON String is: " + jsonString);
+			//log.fine("JSON String is: " + jsonString);
 			
 			//JSON STRING TO BYTES
 			byte[] payload = jsonString.getBytes();
@@ -271,13 +292,13 @@ public class MSTeams implements ActionV2 {
 			}
 			
 			//LOG PROGRESS
-			log.fine("Trying to connect...");
+			log.fine("Trying to connect..."); 
                         
                         			
 			//TRY TO GET RESPONSE CODE
 			try{
                             responseCode = con.getResponseCode();
-                            log.fine("Response Code : " + responseCode);
+                            //log.fine("Response Code : " + responseCode);
 			}
 			
 			//CATCH EXCEPTION, LOG IT THEN SEND RESPONSE ERROR CODE
