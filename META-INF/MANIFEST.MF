@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-SymbolicName: com.MSTeams.Chat;singleton:=true
-Bundle-Version: 0.9.0
+Bundle-Version: 0.10.0
 Bundle-Name: MSTeams
 Bundle-ClassPath: .,lib/com.dynatrace.diagnostics.sdk.jar,lib/commons-
  lang3-3.6.jar
