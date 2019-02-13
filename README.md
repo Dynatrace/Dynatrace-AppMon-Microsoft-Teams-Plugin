@@ -1,4 +1,4 @@
-# MS Teams
+# MS Teams Plugin
 Microsoft Teams integration for Dynatrace
 This integration works via WebHooks for Microsoft Teams.
 
